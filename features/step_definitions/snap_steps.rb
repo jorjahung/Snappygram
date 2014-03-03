@@ -13,14 +13,17 @@ Given(/^I am on the new snap page$/) do
 end
 
 Then(/^I should see snaps$/) do
-  expect(page).to have_xpath("//img")
+  expect(page).to have_xpath("//img[contains(@src, 'first_snap.jpg')]")
   expect(page).to have_content("Our first snap")
 end
 
 When(/^I upload an image$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in "snap[description]", with: "Uploaded snap!"
+  attach_file('snap[image]', '/Users/Abraham/Desktop/snappygram-images/second_snap.jpg')
+  click_button 'Upload'
 end
 
 Then(/^I should see that snap on the homepage$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_xpath("//img[contains(@src, 'second_snap.jpg')]")
+  expect(page).to have_content("Uploaded snap!")
 end
