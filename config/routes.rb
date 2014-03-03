@@ -2,6 +2,8 @@ Snappygram::Application.routes.draw do
 
   get "snaps/index"
   root "snaps#index"
+
+  get 'snaps/new' => 'snaps#new', as: :new_snap
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
