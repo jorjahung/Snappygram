@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'pg'
 
 gem "paperclip", "~> 4.1"
+gem "aws-sdk"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
