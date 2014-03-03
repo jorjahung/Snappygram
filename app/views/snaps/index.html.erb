@@ -1,2 +1,6 @@
-<h1>Snaps#index</h1>
-<p>Find me in app/views/snaps/index.html.erb</p>
+<h1>Snaps</h1>
+
+<% @snaps.each do |snap| %>
+	<%= image_tag snap.image.url(:medium) %>
+	<p><%= snap.description %></p>
+<% end %>
