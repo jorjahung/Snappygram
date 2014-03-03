@@ -27,3 +27,22 @@ Then(/^I should see that snap on the homepage$/) do
   expect(page).to have_xpath("//img[contains(@src, 'second_snap.jpg')]")
   expect(page).to have_content("Uploaded snap!")
 end
+
+Given(/^I have uploaded an image$/) do
+  visit new_snap_path
+  fill_in "snap[description]", with: "Uploaded snap!"
+  attach_file('snap[image]', '/Users/Abraham/Desktop/snappygram-images/second_snap.jpg')
+  click_button 'Upload'
+end
+
+Then(/^I should see in this order:?$/) do |text|
+  if text.is_a?(String)
+    lines = text.split(/\n/)
+  else
+    lines = text.raw.flatten
+  end
+  lines = lines.collect { |line| line.gsub(/\s+/, '')}.collect(&:strip).reject(&:empty?)
+  pattern = lines.collect(&Regexp.method(:quote)).join('.*?')
+  pattern = Regexp.compile(pattern)
+  page.text.gsub(/\s+/, '').should =~ pattern
+end

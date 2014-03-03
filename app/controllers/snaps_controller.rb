@@ -1,6 +1,6 @@
 class SnapsController < ApplicationController
   def index
-    @snaps = Snap.all
+    @snaps = Snap.all(:order => "created_at DESC")
   end
 
   def new
@@ -11,6 +11,7 @@ class SnapsController < ApplicationController
     Snap.create( snap_params )
     redirect_to root_path
   end
+
 
   private
 

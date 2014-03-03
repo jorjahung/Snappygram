@@ -11,3 +11,10 @@ Feature: Snaps
     Given I am on the new snap page
     When I upload an image
     Then I should see that snap on the homepage
+
+  Scenario: Snaps in order
+    Given I have uploaded an image
+    When I am at the homepage
+    Then I should see in this order:
+      |Uploaded snap!|
+      |Our first snap|
