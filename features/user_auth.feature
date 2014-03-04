@@ -19,3 +19,9 @@ Feature: User Authentication
     Given I am signed out
     When I am on the new snaps page
     Then I should not be able to post snaps
+
+  Scenario: Signing up from the homepage
+    Given I am signed out
+    And I am at the homepage
+    When I click "Sign Up"
+    Then I should see sign up form

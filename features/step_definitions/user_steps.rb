@@ -40,3 +40,10 @@ end
 Then(/^I should not be able to post snaps$/) do
   expect(current_path).to eq(new_user_session_path)
 end
+
+Then(/^I should see sign up form$/) do
+  # visit root_path
+  # expect(page).to have_content
+end
+
+
