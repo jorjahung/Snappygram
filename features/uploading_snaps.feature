@@ -2,6 +2,7 @@ Feature: Snaps
   
   Background:
     Given there are images
+    And I am a registered user
 
   Scenario: Viewing snaps
     Given I am at the homepage

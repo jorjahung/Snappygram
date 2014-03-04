@@ -31,3 +31,12 @@ Then(/^I should be signed out$/) do
   expect(page).to have_content("Signed out successfully.")
   expect(page).not_to have_content("Sign Out")
 end
+
+
+When(/^I am on the new snaps page$/) do
+  visit new_snap_path
+end
+
+Then(/^I should not be able to post snaps$/) do
+  expect(current_path).to eq(new_user_session_path)
+end

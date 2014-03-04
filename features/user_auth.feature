@@ -14,3 +14,8 @@ Feature: User Authentication
     When I click "Sign In"
     And I fill out the sign in form
     Then I should be signed in
+
+  Scenario: Posting pictures
+    Given I am signed out
+    When I am on the new snaps page
+    Then I should not be able to post snaps
