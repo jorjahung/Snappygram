@@ -4,7 +4,7 @@ Given(/^there are images$/) do
   first_snap.save
 end
 
-Given(/^I am at the homepage$/) do
+Given(/^I am (?:at|on) the homepage$/) do
   visit root_path
 end
 
