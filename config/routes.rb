@@ -1,5 +1,6 @@
 Snappygram::Application.routes.draw do
 
+  devise_for :users
   root "snaps#index"
 
   get "snaps/index" => "snaps#index", as: :snaps
