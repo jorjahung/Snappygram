@@ -1,6 +1,26 @@
 <h1>Snaps</h1>
-
+<ul id="snaps-container">
 <% @snaps.each do |snap| %>
-	<%= image_tag snap.image.url(:medium) %>
-	<p><%= snap.description %></p>
+  <li><%= image_tag snap.image.url(:medium) %>
+  <p><%= snap.description %></p></li>
 <% end %>
+</ul>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  // Enable pusher logging - don't include this in production
+  Pusher.log = function(message) {
+    if (window.console && window.console.log) {
+      window.console.log(message);
+    }
+  };
+
+  var pusher = new Pusher('54588be462ee98f5db66');
+  var channel = pusher.subscribe('Snappygram');
+  channel.bind('new_snap', function(data) {
+    $('#snaps-container').prepend(
+      '<li><img src="'+data.src+'" /><p>'+data.description+'</p></li>'
+    );
+  });
+</script>

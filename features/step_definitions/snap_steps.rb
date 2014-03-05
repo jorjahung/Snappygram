@@ -46,3 +46,14 @@ Then(/^I should see in this order:?$/) do |text|
   pattern = Regexp.compile(pattern)
   page.text.gsub(/\s+/, '').should =~ pattern
 end
+
+When(/^someone posts a photo$/) do
+  Pusher.url = "http://54588be462ee98f5db66:e51138c2fdbb0e8e0ac7@api.pusherapp.com/apps/67764"
+  Pusher["Snappygram"].trigger("new_snap", {
+    src: "/system/snaps/images/000/000/004/medium/second_snap.gif?1393946863", description: "Pizzaaaaaa"
+  })
+end
+
+Then(/^I should see the photo$/) do
+  expect(page).to have_content('Pizzaaaaaa')
+end
