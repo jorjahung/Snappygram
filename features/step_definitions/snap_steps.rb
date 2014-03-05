@@ -67,5 +67,16 @@ Then(/^I should see my username$/) do
   expect(page).to have_content('snoopybabe')
 end
 
+When(/^I submit a photo with tags$/) do
+  fill_in "snap[description]", with: "It's a cat!"
+  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
+  fill_in "snap[tags]", with: "Catatat"
+  click_button 'Upload'
+end
+
+Then(/^I should see the tags in the homepage$/) do
+  expect(page).to have_content('Catatat')
+end
+
 
 

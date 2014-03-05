@@ -24,3 +24,8 @@ Feature: Snaps
     Given I have uploaded an image
     When I am at the home page
     Then I should see my username
+
+  Scenario: Snaps should have tags
+    Given I am on the new snap page
+    When I submit a photo with tags
+    Then I should see the tags in the homepage

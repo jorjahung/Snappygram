@@ -4,7 +4,11 @@
   <li><%= image_tag snap.image.url(:medium) %>
 
   <p><%= snap.user.username if snap.user %></p>
-  <p><%= snap.description %></p></li>
+  <p><%= snap.description %></p>
+  <% snap.tags.each do |tag| %>
+  <p><%= tag.text %></p>
+  <% end %>
+  </li>
 <% end %>
 </ul>
 
@@ -21,8 +25,20 @@
   var pusher = new Pusher('54588be462ee98f5db66');
   var channel = pusher.subscribe('Snappygram');
   channel.bind('new_snap', function(data) {
-    $('#snaps-container').prepend(
-      '<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p></li>'
-    );
+    // $('#snaps-container').prepend(
+    //   '<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p><p>'+data.tags[0].text+'</p></li>'
+    // );
+
+    var tags = data.tags;
+    var newHTML = ['<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p>'];
+    $.each(tags, function(index, value) {
+        newHTML.push('<p>' + value.text + '</p>');
+    });
+    newHTML.push('</li>');
+    $("#snaps-container").prepend(newHTML.join(""));
+
+    data.tags.forEach(function(entry) {
+      console.log(entry.text);
+    });
   });
 </script>
