@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe SnapsController do
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      expect(response).to be_success
+  describe "Creating Snaps" do
+    it "should load new snaps through Pusher" do
+      expect(Pusher["Snappygram"]).to receive(:trigger)
+      post :create, :snap => {description: "Pizzaaaaaa", image: fixture_file_upload('first_snap.jpg', 'image/jpg')}
     end
   end
 

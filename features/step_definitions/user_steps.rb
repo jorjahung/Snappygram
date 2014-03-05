@@ -32,7 +32,6 @@ Then(/^I should be signed out$/) do
   expect(page).not_to have_content("Sign Out")
 end
 
-
 When(/^I am on the new snaps page$/) do
   visit new_snap_path
 end

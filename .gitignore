@@ -18,3 +18,5 @@
 /public/system
 
 .env
+.DS_Store
+spec/fixtures/first_snap.jpg

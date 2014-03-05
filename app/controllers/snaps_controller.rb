@@ -12,7 +12,10 @@ class SnapsController < ApplicationController
   end
 
   def create
-    Snap.create( snap_params )
+    snap = Snap.create( snap_params )
+    Pusher.url = "http://54588be462ee98f5db66:e51138c2fdbb0e8e0ac7@api.pusherapp.com/apps/67764"
+    Pusher["Snappygram"].trigger("new_snap", { src: snap.image.url(:medium), 
+                                               description: snap.description })
     redirect_to root_path
   end
 
