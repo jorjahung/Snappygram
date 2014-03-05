@@ -1,6 +1,6 @@
 Given(/^there are images$/) do
   first_snap = Snap.new(description: "Our first snap")
-  first_snap.image = File.open('/Users/Abraham/Desktop/snappygram-images/first_snap.jpg')
+  first_snap.image = File.open('/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
   first_snap.save
 end
 
@@ -19,7 +19,7 @@ end
 
 When(/^I upload an image$/) do
   fill_in "snap[description]", with: "Uploaded snap!"
-  attach_file('snap[image]', '/Users/Abraham/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
   click_button 'Upload'
 end
 
@@ -31,7 +31,7 @@ end
 Given(/^I have uploaded an image$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Uploaded snap!"
-  attach_file('snap[image]', '/Users/Abraham/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
   click_button 'Upload'
 end
 
@@ -50,7 +50,7 @@ end
 When(/^someone posts a photo$/) do
   Pusher.url = "http://54588be462ee98f5db66:e51138c2fdbb0e8e0ac7@api.pusherapp.com/apps/67764"
   Pusher["Snappygram"].trigger("new_snap", {
-    src: "/system/snaps/images/000/000/004/medium/second_snap.gif?1393946863", description: "Pizzaaaaaa"
+    src: "/system/snaps/images/000/000/001/medium/second_snap.jpg?1394030324", description: "Pizzaaaaaa"
   })
 end
 
