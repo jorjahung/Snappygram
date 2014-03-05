@@ -22,7 +22,7 @@
   var channel = pusher.subscribe('Snappygram');
   channel.bind('new_snap', function(data) {
     $('#snaps-container').prepend(
-      '<li><img src="'+data.src+'" /><p>'+data.description+'</p></li>'
+      '<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p></li>'
     );
   });
 </script>
