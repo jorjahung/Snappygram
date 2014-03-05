@@ -19,3 +19,8 @@ Feature: Snaps
     Then I should see in this order:
       |Uploaded snap!|
       |Our first snap|
+
+  Scenario: Snaps should have user name
+    Given I have uploaded an image
+    When I am at the home page
+    Then I should see my username

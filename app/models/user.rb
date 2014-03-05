@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
          validates_uniqueness_of :username
+
+         has_many :snaps
 end

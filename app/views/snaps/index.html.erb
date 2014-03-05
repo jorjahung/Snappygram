@@ -2,6 +2,8 @@
 <ul id="snaps-container">
 <% @snaps.each do |snap| %>
   <li><%= image_tag snap.image.url(:medium) %>
+
+  <p><%= snap.user.username if snap.user %></p>
   <p><%= snap.description %></p></li>
 <% end %>
 </ul>
