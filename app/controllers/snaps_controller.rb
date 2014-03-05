@@ -1,6 +1,6 @@
 class SnapsController < ApplicationController
   def index
-    @snaps = Snap.all(:order => "created_at DESC")
+    @snaps = Snap.order("created_at DESC")
   end
 
   def new

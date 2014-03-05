@@ -24,4 +24,4 @@ Feature: User Authentication
     Given I am signed out
     And I am at the homepage
     When I click "Sign Up"
-    Then I should see sign up form
+    Then I should see the sign up page
