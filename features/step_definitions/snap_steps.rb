@@ -44,13 +44,13 @@ Then(/^I should see in this order:?$/) do |text|
   lines = lines.collect { |line| line.gsub(/\s+/, '')}.collect(&:strip).reject(&:empty?)
   pattern = lines.collect(&Regexp.method(:quote)).join('.*?')
   pattern = Regexp.compile(pattern)
-  page.text.gsub(/\s+/, '').should =~ pattern
+  expect(page.text.gsub(/\s+/, '')).to match(pattern)
 end
 
 When(/^someone posts a photo$/) do
   Pusher.url = "http://54588be462ee98f5db66:e51138c2fdbb0e8e0ac7@api.pusherapp.com/apps/67764"
   Pusher.trigger("Snappygram", "new_snap", {
-    src: "/system/snaps/images/000/000/001/medium/second_snap.jpg?1394030324", username: "snoopybabe", description: "Pizzaaaaaa"
+    src: "/system/snaps/images/000/000/001/medium/second_snap.jpg?1394030324", username: "snoopybabe", tags: ["cat"], description: "Pizzaaaaaa"
   })
 end
 
