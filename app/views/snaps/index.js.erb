@@ -3,6 +3,6 @@ $('a.load-more-snaps').attr('href', '<%= root_path page: @snaps.next_page %>');
  
 <% if @snaps.current_page == @snaps.total_pages %>
   $('a.load-more-snaps').remove();
-  $('#snaps-container').after('<p>Reached end of stream</p>');
+  $('#snaps-container').after('<p id="end-reached">Reached end of stream</p>');
 <% end %>
 
