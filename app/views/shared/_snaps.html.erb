@@ -1,5 +1,5 @@
 <% snaps.each do |snap| %>
-  <li><%= image_tag snap.image.url(:medium) %>
+  <li><%= link_to (image_tag snap.image.url(:medium)), snap_path(snap), class: "image-link" %>
     <p><%= snap.user.username if snap.user %></p>
     <p><%= snap.description %></p>
     <% snap.tags.each do |tag| %>

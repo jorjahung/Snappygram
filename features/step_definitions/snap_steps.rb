@@ -1,7 +1,7 @@
 Given(/^there are images$/) do
-  first_snap = Snap.new(description: "Our first snap")
-  first_snap.image = File.open('/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
-  first_snap.save
+  @first_snap = Snap.new(description: "Our first snap")
+  @first_snap.image = File.open('/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+  @first_snap.save
 end
 
 Given(/^there are pages of snaps uploaded$/) do
@@ -97,3 +97,12 @@ Then(/^I should only see (\d+) snaps$/) do |arg1|
   expect(page).not_to have_content("Second page!")
 end
 
+When(/^I click on the first image$/) do
+  within("#snaps-container") do
+    find(".image-link").click
+  end
+end
+
+Then(/^I should see the page for that image$/) do
+  expect(current_path).to eq(snap_path(@first_snap))
+end

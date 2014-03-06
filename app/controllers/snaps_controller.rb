@@ -45,6 +45,9 @@ class SnapsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @snap = Snap.find(params[:id])
+  end
 
   private
 
