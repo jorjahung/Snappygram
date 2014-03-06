@@ -11,34 +11,3 @@
   </li>
 <% end %>
 </ul>
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-  // // Enable pusher logging - don't include this in production
-  // Pusher.log = function(message) {
-  //   if (window.console && window.console.log) {
-  //     window.console.log(message);
-  //   }
-  // };
-
-  var pusher = new Pusher('54588be462ee98f5db66');
-  var channel = pusher.subscribe('Snappygram');
-  channel.bind('new_snap', function(data) {
-    // $('#snaps-container').prepend(
-    //   '<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p><p>'+data.tags[0].text+'</p></li>'
-    // );
-
-    var tags = data.tags;
-    var newHTML = ['<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p>'];
-    $.each(tags, function(index, value) {
-        newHTML.push('<p>' + value.text + '</p>');
-    });
-    newHTML.push('</li>');
-    $("#snaps-container").prepend(newHTML.join(""));
-
-    data.tags.forEach(function(entry) {
-      console.log(entry.text);
-    });
-  });
-</script>
