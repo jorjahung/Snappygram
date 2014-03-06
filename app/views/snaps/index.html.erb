@@ -1,13 +1,16 @@
-<h1>Snaps</h1>
 <ul id="snaps-container">
 <% @snaps.each do |snap| %>
-  <li><%= image_tag snap.image.url(:medium) %>
-
-  <p><%= snap.user.username if snap.user %></p>
-  <p><%= snap.description %></p>
-  <% snap.tags.each do |tag| %>
-  <p><%= tag.text %></p>
-  <% end %>
+  <li>
+    <%= image_tag snap.image.url(:medium) %>
+    <section>
+      <header><h1><%= snap.user.username if snap.user %></h1></header>
+      <p><%= snap.description %></p>
+      <footer>
+        <% snap.tags.each do |tag| %>
+          <span><%= tag.text %></span>
+        <% end %>
+      </footer>
+    </section>
   </li>
 <% end %>
 </ul>
@@ -15,20 +18,9 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-  // // Enable pusher logging - don't include this in production
-  // Pusher.log = function(message) {
-  //   if (window.console && window.console.log) {
-  //     window.console.log(message);
-  //   }
-  // };
-
   var pusher = new Pusher('54588be462ee98f5db66');
   var channel = pusher.subscribe('Snappygram');
   channel.bind('new_snap', function(data) {
-    // $('#snaps-container').prepend(
-    //   '<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p><p>'+data.tags[0].text+'</p></li>'
-    // );
-
     var tags = data.tags;
     var newHTML = ['<li><img src="'+data.src+'" /><p>'+data.username+'</p><p>'+data.description+'</p>'];
     $.each(tags, function(index, value) {

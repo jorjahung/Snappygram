@@ -17,10 +17,12 @@
       <%= link_to 'Sign Up', new_user_registration_path %>
     <% end %>
   </header>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  <%= yield %>
+  <main>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </main>
 </body>
 </html>
 
