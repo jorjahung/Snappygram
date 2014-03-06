@@ -19,7 +19,6 @@ class SnapsController < ApplicationController
   def filter 
     @tag = Tag.find(params[:id])
     @snaps = Snap.order("created_at DESC").select { |snap| snap.tags.include? @tag }
-    render :index
   end
 
   def create
