@@ -46,7 +46,7 @@ end
 Given(/^I have uploaded an image$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Uploaded snap!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', '/Users/jorja/Desktop/snappygram-images/second_snap.jpg')
   click_button 'Upload'
 end
 
