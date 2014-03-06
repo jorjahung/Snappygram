@@ -1,0 +1,6 @@
+<%= image_tag @snap.image.url %>
+<p><%= @snap.user.username if @snap.user %></p>
+<p><%= @snap.description %></p>
+<% @snap.tags.each do |tag| %>
+  <p><%= link_to tag.text, tag_path(tag.id) %></p>
+<% end %>

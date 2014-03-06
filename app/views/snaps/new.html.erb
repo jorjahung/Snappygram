@@ -4,6 +4,6 @@
   <%= form.label :image %>
   <%= form.file_field :image %>
   <%= form.label :tags %>
-  <%= form.text_field :tags, value: nil %>
+  <%= form.text_field :tags, value: nil, id: "tag-field" %>
   <%= form.submit 'Upload' %>
 <% end %>

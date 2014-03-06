@@ -29,3 +29,13 @@ Feature: Snaps
     Given I am on the new snap page
     When I submit a photo with tags
     Then I should see the tags in the homepage
+
+  Scenario: Seeing a certain number of snaps per page
+    Given there are pages of snaps uploaded
+    When I visit the homepage
+    Then I should only see 10 snaps
+
+  Scenario: Individual snap views
+    Given I am at the homepage
+    When I click on the first image
+    Then I should see the page for that image 

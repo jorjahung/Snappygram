@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'pusher'
 
+gem 'will_paginate', '~> 3.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -56,7 +58,7 @@ end
 # gem 'capistrano', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails'
 end
 
 # Use debugger

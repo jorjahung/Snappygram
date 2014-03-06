@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require reset.css
+ *= require jquery.tagsinput
  *= require_tree .
  */
