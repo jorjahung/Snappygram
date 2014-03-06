@@ -52,7 +52,6 @@ Then(/^I should not be able to post snaps$/) do
 end
 
 Then(/^I should see the sign up page$/) do
-  expect(page).to have_content("snoopybabe")
   expect(current_path).to eq(new_user_registration_path)
 end
 
