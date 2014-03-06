@@ -8,6 +8,7 @@
 </head>
 <body>
   <header>
+    <%= image_tag "single-03.png" %>
     <%= link_to 'HOME SWEET HOME', root_path %>
     <% if user_signed_in? %>
       <%= link_to 'New Snap', new_snap_path %>
