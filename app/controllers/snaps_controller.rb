@@ -33,7 +33,7 @@ class SnapsController < ApplicationController
     snap = Snap.new( new_params )
     snap.user = current_user
     snap.save
-    Pusher.url = "http://54588be462ee98f5db66:e51138c2fdbb0e8e0ac7@api.pusherapp.com/apps/67764"
+    Pusher.url = "http://1460f55072d4b5c355e8:efe1c68aa43b5f454d4d@api.pusherapp.com/apps/67907"
     Pusher.trigger("Snappygram", "new_snap", { src: snap.image.url(:medium),
                                                username: snap.user.username,
                                                tags: snap.tags,
