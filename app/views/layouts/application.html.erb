@@ -8,18 +8,24 @@
 <body>
   <header>
     <%= image_tag "single-03.png" %>
-    <%= link_to 'HOME SWEET HOME', root_path %>
-    <% if user_signed_in? %>
-      <%= link_to 'New Snap', new_snap_path %>
-      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %>
-      <%= link_to 'Sign Up', new_user_registration_path %>
-    <% end %>
+    <%= link_to 'Snappygram', root_path, id: "logo" %>
+    <ul class="user-links">
+      <% if user_signed_in? %>
+        <li><%= link_to 'New Snap', new_snap_path %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <% end %>
+    </ul>
   </header>
   <main>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="flash notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="flash alert"><%= alert %></p>
+    <% end %>
     
     <%= yield %>
   </main>

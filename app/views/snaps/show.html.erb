@@ -1,6 +1,10 @@
-<%= image_tag @snap.image.url %>
-<p><%= @snap.user.username if @snap.user %></p>
-<p><%= @snap.description %></p>
-<% @snap.tags.each do |tag| %>
-  <p><%= link_to tag.text, tag_path(tag.id) %></p>
-<% end %>
+<%= image_tag @snap.image.url, class: "full-image" %>
+<section class="snap-section">
+  <header><h1><%= @snap.user.username if @snap.user %></h1></header>
+  <p><%= @snap.description %></p>
+  <footer>
+    <% @snap.tags.each do |tag| %>
+      <span class="tag"><%= link_to tag.text, tag_path(tag.id) %></span>
+    <% end %>
+  </footer>
+</section>

@@ -6,7 +6,7 @@
       <p><%= snap.description %></p>
       <footer>
         <% snap.tags.each do |tag| %>
-          <span><%= link_to tag.text, tag_path(tag.id) %></span>
+          <span class="tag"><%= link_to tag.text, tag_path(tag.id) %></span>
         <% end %>
       </footer>
     </section>

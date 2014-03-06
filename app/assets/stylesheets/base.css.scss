@@ -1,4 +1,5 @@
 $body-color: #242424;
+$green: #0aaa23;
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -14,30 +15,96 @@ $body-color: #242424;
   &:after{ clear: both; }
 }
 
+@mixin linearGradient($top, $bottom){
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
 body {
   background-color: $body-color;
   color: #fff;
   font-family: sans-serif;
   
   > header {
-    background-color: #fff;
+    background-color: rgb(90, 90, 90);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     box-sizing: border-box;
     padding: 1em;
+    @include linearGradient(#777, #555);
+    @include box-shadow(0px,0px,10px,#000,false);
+    @include clearfix();
+    z-index: 10;
+    
+    #logo {
+      float: left;
+      top: 6px;
+    }
+    
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.4em;
+      margin-right: 1em;
+      margin-left: 0.5em;
+      font-weight: 300;
+      position: relative;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
     
     img {
       max-width: 30px;
       @include border-radius(50%);
       border: 1px solid #000;
+      float: left;
     }
   }
 }
 
+.user-links {
+  display: inline-block;
+  float: right;
+  position: relative;
+  font-size: 0.9em;
+  right: 5px;
+  top: 0.6em;
+  
+  li {
+    display: inline-block;
+  }
+}
+
 main {
-  margin-top: 4em;
+  margin-top: 6em;
+  padding-bottom: 2em;
+  text-align: center;
+}
+
+a {
+  color: #0aaa23;
 }
 
 #snaps-container {
@@ -49,10 +116,11 @@ main {
     margin-right: auto;
     @include clearfix();
     margin-bottom: 3em;
+    text-align: left;
     
     img {
       border: 5px solid #fff;
-      border-bottom: 25px solid #fff;
+      border-bottom: 35px solid #fff;
       float: left;
       margin-right: 1em;
     }
@@ -60,6 +128,14 @@ main {
     section {
       float: left;
       opacity: 0.7;
+      
+      header {
+        margin-bottom: 0.75em;
+      }
+      
+      footer {
+        margin-top: 2em;
+      }
       
       h1 {
         font-weight: bold;
@@ -70,4 +146,107 @@ main {
       opacity: 0.9;
     }
   }
+}
+
+.snap-section {
+  margin-top: 2em;
+  
+  h1 {
+    font-weight: bold;
+  }
+  
+  header {
+    margin-bottom: 0.75em;
+  }
+  
+  footer {
+    margin-top: 2em;
+  }
+}
+
+.tag {  
+  a {
+    font-size: 0.8em;
+    background-color: rgba(10, 170, 35, 0.48);
+    padding: 0.5em;
+    margin-right: 0.5em;
+    @include border-radius(3px);
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(10, 170, 35, 0.78); 
+    }
+  }
+}
+
+.full-image {
+  max-height: 800px;
+  max-width: 1000px;
+}
+
+form {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.75em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    @include border-radius(5px);
+    background-color: #ddd;
+    border: none;
+    
+    &:focus {
+      background-color: #fafafa;
+      outline: none;
+    }
+  }
+}
+
+.remember-label {
+  margin-right: 2em;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 2em;
+}
+
+.button {
+  background-color: $green;
+  color: #fff;
+  @include linearGradient($green, darken($green, 10%));
+  border: none;
+  font-size: 1.1em;
+  padding: 0.5em 0.75em;
+  @include border-radius(3px);
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+.devise-links:nth-of-type(2) {
+  margin-left: 1em;
+}
+
+.flash {
+  margin-bottom: 2em;
+  background-color: rgba(255, 255, 255, 0.19);
+  padding: 0.5em 0.75em;
+  @include border-radius(3px);
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
