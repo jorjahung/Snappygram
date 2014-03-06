@@ -2,7 +2,9 @@
   <li>
     <%= link_to (image_tag snap.image.url(:medium)), snap_path(snap), class: "image-link" %>
     <section>
-      <header><h1><%= snap.user.username if snap.user %></h1></header>
+      <header>
+        <h1><%= link_to snap.user.username, user_path(snap.user) if snap.user %></h1>
+      </header>
       <p><%= snap.description %></p>
       <footer>
         <% snap.tags.each do |tag| %>
