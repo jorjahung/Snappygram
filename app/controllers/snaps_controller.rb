@@ -1,6 +1,11 @@
 class SnapsController < ApplicationController
   def index
-    @snaps = Snap.order("created_at DESC")
+    # @snaps = Snap.order("created_at DESC")
+    @snaps = Snap.order("created_at DESC").paginate(:page => params[:page])
+    respond_to do |format|
+      format.html
+      format.js # add this line for your js template
+    end
   end
 
   def new

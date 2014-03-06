@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.tagsinput
+//= require jquery.inview
 //= require_tree .

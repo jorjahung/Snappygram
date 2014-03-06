@@ -4,7 +4,22 @@ Given(/^there are images$/) do
   first_snap.save
 end
 
-Given(/^I am (?:at|on) the homepage$/) do
+Given(/^there are pages of snaps uploaded$/) do
+  visit new_snap_path
+  fill_in "snap[description]", with: "Second page!"
+  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+  fill_in "snap[tags]", with: "cat unicorn"
+  click_button 'Upload'
+  10.times do
+    visit new_snap_path
+    fill_in "snap[description]", with: "Uploaded snap!"
+    attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+    fill_in "snap[tags]", with: "cat unicorn"
+    click_button 'Upload'
+  end
+end
+
+Given(/^I (?:am |)(?:at|on|visit) the homepage$/) do
   visit root_path
 end
 
@@ -78,5 +93,7 @@ Then(/^I should see the tags in the homepage$/) do
   expect(page).to have_content('Catatat')
 end
 
-
+Then(/^I should only see (\d+) snaps$/) do |arg1|
+  expect(page).not_to have_content("Second page!")
+end
 

@@ -1,13 +1,5 @@
 <h1>Snaps</h1>
 <ul id="snaps-container">
-<% @snaps.each do |snap| %>
-  <li><%= image_tag snap.image.url(:medium) %>
-
-  <p><%= snap.user.username if snap.user %></p>
-  <p><%= snap.description %></p>
-  <% snap.tags.each do |tag| %>
-    <p><%= link_to tag.text, tag_path(tag.id) %></p>
-  <% end %>
-  </li>
-<% end %>
+<%= render partial: 'shared/snaps', locals: { snaps: @snaps } %>
 </ul>
+<%= link_to 'Load More Snaps', root_path(:page => @snaps.next_page), :class => 'load-more-snaps', :remote => true if @snaps.next_page %>

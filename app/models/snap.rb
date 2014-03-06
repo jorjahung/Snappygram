@@ -4,4 +4,6 @@ class Snap < ActiveRecord::Base
 
   belongs_to :user
   has_and_belongs_to_many :tags
+
+  self.per_page = 10
 end
