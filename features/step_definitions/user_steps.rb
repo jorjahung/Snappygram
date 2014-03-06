@@ -68,5 +68,9 @@ Then(/^I should see my location$/) do
   expect(page).to have_content("United Kingdom")
 end
 
+Then(/^I should see all my snaps$/) do
+  expect(page).to have_xpath("//img[contains(@src, 'second_snap.jpg')]")
+  expect(page).to have_content("Uploaded snap!")
+end
 
 

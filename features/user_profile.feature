@@ -13,3 +13,7 @@ Feature: User Profile
   Scenario: User avatar
     Given I am on my page
     Then I should see my avatar
+
+  Scenario: User snaps
+    Given I am on my page
+    Then I should see all my snaps
