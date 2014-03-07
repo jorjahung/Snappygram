@@ -87,7 +87,7 @@
   max-width: 95%;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 516px) {
   #snaps-container {
     width: 500px;
     padding: 0;
@@ -115,7 +115,9 @@
       }
     }
   }
-  
+}
+
+@media screen and (min-width: 1032px) {
   .full-image {
     max-height: 800px;
     max-width: 1000px;
