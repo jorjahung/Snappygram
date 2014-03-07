@@ -87,6 +87,14 @@
   max-width: 95%;
 }
 
+.filtered-by {
+  font-style: italic;
+  font-weight: 300;
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
 @media screen and (min-width: 516px) {
   #snaps-container {
     width: 500px;
@@ -114,6 +122,10 @@
         opacity: 0.9;
       }
     }
+  }
+  
+  .filtered-by {
+    margin-top: 0;
   }
 }
 
