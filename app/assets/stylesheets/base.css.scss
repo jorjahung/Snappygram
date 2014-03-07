@@ -1,69 +1,8 @@
-$body-color: #242424;
-$green: #0aaa23;
+@import 'variables';
+@import 'mixins';
 
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-       -o-border-radius: $radius;
-          border-radius: $radius;
-}
-@mixin border-top-radius($radius) {
-  -webkit-border-top-right-radius: $radius;
-  border-top-right-radius: $radius;
-   -webkit-border-top-left-radius: $radius;
-   border-top-left-radius: $radius;
-   background-clip: padding-box;
-}
-@mixin border-right-radius($radius) {
-  -webkit-border-bottom-right-radius: $radius;
-  border-bottom-right-radius: $radius;
-     -webkit-border-top-right-radius: $radius;
-     border-top-right-radius: $radius;
-     background-clip: padding-box;
-}
-@mixin border-bottom-radius($radius) {
-  -webkit-border-bottom-right-radius: $radius;
-  border-bottom-right-radius: $radius;
-   -webkit-border-bottom-left-radius: $radius;
-   border-bottom-left-radius: $radius;
-   background-clip: padding-box;
-}
-@mixin border-left-radius($radius) {
-  -webkit-border-bottom-left-radius: $radius;
-  border-bottom-left-radius: $radius;
-     -webkit-border-top-left-radius: $radius;
-     border-top-left-radius: $radius;
-     background-clip: padding-box;
-}
-
-@mixin clearfix(){
-  zoom:1;
-  &:before, &:after{ content:""; display:table; }
-  &:after{ clear: both; }
-}
-
-@mixin linearGradient($top, $bottom){
-  background: $top; /* Old browsers */
-  background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-}
-
-@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
-  @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $color;
-    -moz-box-shadow:inset $top $left $blur $color;
-    box-shadow:inset $top $left $blur $color;
-  } @else {
-    -webkit-box-shadow: $top $left $blur $color;
-    -moz-box-shadow: $top $left $blur $color;
-    box-shadow: $top $left $blur $color;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -79,7 +18,8 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 1em;
-    height: 4em;
+    text-align: center; // !
+//    height: 4em;
     @include linearGradient(#777, #555);
     @include box-shadow(0px,0px,10px,#000,false);
     @include clearfix();
@@ -109,7 +49,7 @@ body {
     }
     
     img {
-      max-width: 30px;
+      width: 30px;
       @include border-radius(50%);
       border: 1px solid #000;
       float: left;
@@ -119,11 +59,10 @@ body {
 
 .user-links {
   display: inline-block;
-  float: right;
   position: relative;
   font-size: 0.9em;
   right: 5px;
-  top: 0.6em;
+  margin-top: 2em;
   
   li {
     display: inline-block;
@@ -131,9 +70,28 @@ body {
 }
 
 main {
-  margin-top: 6em;
+  margin-top: 10em;
   padding-bottom: 2em;
   text-align: center;
+}
+
+@media screen and (min-width: 481px) {
+  .user-links {
+    float: right;
+    top: 0.6em;
+    margin-top: 0;
+  }
+  
+  body {
+    > header {
+      text-align: right;
+      height: 4em;
+    }
+  }
+  
+  main {
+    margin-top: 6em;
+  }
 }
 
 a {
@@ -145,92 +103,9 @@ a {
   }
 }
 
-#snaps-container {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  
-  li {
-    list-style-type: none;
-    display: block;
-    width: 100%;
-    @include clearfix();
-    margin-bottom: 3em;
-    text-align: left;
-    
-    
-    img {
-      border: 5px solid #fff;
-      border-bottom: 35px solid #fff;
-      float: left;
-      margin-right: 1em;
-      -webkit-transform:rotate(-2deg);
-    }
-    
-    section {
-      float: left;
-      opacity: 0.7;
-      
-      header {
-        margin-bottom: 0.75em;
-      }
-      
-      footer {
-        margin-top: 2em;
-      }
-      
-      h1 {
-        font-weight: bold;
-      }
-    }
-    
-    &:hover section {
-      opacity: 0.9;
-    }
-  }
-}
-
-.snap-section {
-  margin-top: 2em;
-  
-  h1 {
-    font-weight: bold;
-  }
-  
-  header {
-    margin-bottom: 0.75em;
-  }
-  
-  footer {
-    margin-top: 2em;
-  }
-}
-
-.snap-tag {  
-  a {
-    font-size: 0.8em;
-    background-color: rgba(10, 170, 35, 0.48);
-    padding: 0.5em 0.75em 0.5em 1em;
-    margin-right: 0.5em;
-//    @include border-radius(3px);
-    @include border-left-radius(12px);
-    @include border-right-radius(2px);
-    color: #fff;
-    text-decoration: none;
-
-    &:hover {
-      background-color: rgba(10, 170, 35, 0.78); 
-    }
-  }
-}
-
-.full-image {
-  max-height: 800px;
-  max-width: 1000px;
-}
-
 form {
   width: 500px;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
@@ -264,6 +139,7 @@ form {
 
 h2 {
   width: 500px;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -296,42 +172,8 @@ h2 {
   padding: 0.5em 0.75em;
   @include border-radius(3px);
   width: 500px;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
-}
-
-#snaps-container.user-snaps {
-  margin-left: 200px;
-  margin-right: 0;
-  display: inline-block;
-  vertical-align: text-top;
-}
-
-.user-profile {
-  width: 200px;
-  display: inline-block;
-  margin-right: 100px;
-  vertical-align: text-top;
-  position: fixed;
-  margin-left: -100px;
-  
-  img {
-    max-width: 100%;
-    margin-bottom: 1em;
-  }
-  
-  h1 {
-    font-size: 1.3em;
-    font-weight: bold;
-  }
-  
-  .username {
-    color: #fafafa;
-    margin: 1em;
-  }
-  
-  .location  {
-    color: #fafafa;
-    margin: 1em;
-  }
+  border: 1px solid rgba(255, 255, 255, 0.37);
 }

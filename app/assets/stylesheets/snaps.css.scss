@@ -1,3 +1,123 @@
 // Place all the styles related to the Snaps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixins';
+
+#snaps-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 1em;
+  padding-right: 1em;
+  
+  li {
+    list-style-type: none;
+    display: block;
+    width: 100%;
+    margin-bottom: 3em;
+    text-align: left;
+    
+    
+    img {
+      border: 5px solid #fff;
+      border-bottom: 35px solid #fff;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 1.5em;
+      max-width: 100%;
+      @include rotate(2deg);
+    }
+    
+    section {
+      box-sizing: border-box;
+      padding-left: 2em;
+      padding-right: 2em;
+      
+      header {
+        margin-bottom: 0.75em;
+      }
+      
+      footer {
+        margin-top: 2em;
+      }
+      
+      h1 {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.snap-section {
+  margin-top: 2em;
+  
+  h1 {
+    font-weight: bold;
+  }
+  
+  header {
+    margin-bottom: 0.75em;
+  }
+  
+  footer {
+    margin-top: 2em;
+  }
+}
+
+.snap-tag {  
+  a {
+    font-size: 0.8em;
+    background-color: rgba(10, 170, 35, 0.48);
+    padding: 0.5em 0.75em 0.5em 1em;
+    margin-right: 0.5em;
+    @include border-left-radius(12px);
+    @include border-right-radius(2px);
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(10, 170, 35, 0.78); 
+    }
+  }
+}
+
+.full-image {
+  max-height: 95%;
+  max-width: 95%;
+}
+
+@media screen and (min-width: 481px) {
+  #snaps-container {
+    width: 500px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    
+    li {
+      @include clearfix();
+      
+      img {
+        @include rotate(-2deg);
+        float: left;
+        margin-right: 1em;
+        margin-bottom: 0;
+      }
+      
+      section {
+        opacity: 0.7;
+        float: left;
+        padding: 0;
+      }
+      
+      &:hover section {
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  .full-image {
+    max-height: 800px;
+    max-width: 1000px;
+  }
+}

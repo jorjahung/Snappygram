@@ -1,3 +1,48 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-profile {
+  margin-bottom: 2em;
+  
+  img {
+    width: 100%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+  }
+  
+  h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  
+  .username {
+    color: #fafafa;
+    margin: 1em;
+  }
+  
+  .location  {
+    color: #fafafa;
+    margin: 1em;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  #snaps-container.user-snaps {
+    margin-left: 200px;
+    margin-right: 0;
+    display: inline-block;
+    vertical-align: text-top;
+  }
+
+  .user-profile {
+    width: 200px;
+    display: inline-block;
+    margin-right: 100px;
+    vertical-align: text-top;
+    position: fixed;
+    margin-left: -100px;
+  }
+}
