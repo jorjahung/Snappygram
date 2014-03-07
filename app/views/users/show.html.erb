@@ -1,6 +1,10 @@
-<p><%= image_tag @user.avatar.url %></p>
-<p><%= @user.fullname %></p>
-<p><%= @user.username %></p>
-<p><%= @user.location %></p>
+<aside class="user-profile">
+  <%= image_tag @user.avatar.url %>
+  <h1><%= @user.fullname %></h1>
+  <p class="username"><%= @user.username %></p>
+  <p class="user-location"><%= @user.location %></p>
+</aside>
 
-<%= render partial: 'shared/snaps', locals: { snaps: @user.snaps } %>
+<ul id="snaps-container" class="user-snaps">
+  <%= render partial: 'shared/snaps', locals: { snaps: @user.snaps } %>
+</ul>

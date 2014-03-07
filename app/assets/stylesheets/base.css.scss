@@ -8,6 +8,34 @@ $green: #0aaa23;
        -o-border-radius: $radius;
           border-radius: $radius;
 }
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+   -webkit-border-top-left-radius: $radius;
+   border-top-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+     -webkit-border-top-right-radius: $radius;
+     border-top-right-radius: $radius;
+     background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+   -webkit-border-bottom-left-radius: $radius;
+   border-bottom-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+     -webkit-border-top-left-radius: $radius;
+     border-top-left-radius: $radius;
+     background-clip: padding-box;
+}
 
 @mixin clearfix(){
   zoom:1;
@@ -108,12 +136,14 @@ a {
 }
 
 #snaps-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  
   li {
     list-style-type: none;
     display: block;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
     @include clearfix();
     margin-bottom: 3em;
     text-align: left;
@@ -164,13 +194,15 @@ a {
   }
 }
 
-.tag {  
+.snap-tag {  
   a {
     font-size: 0.8em;
     background-color: rgba(10, 170, 35, 0.48);
-    padding: 0.5em;
+    padding: 0.5em 0.75em;
     margin-right: 0.5em;
-    @include border-radius(3px);
+//    @include border-radius(3px);
+    @include border-left-radius(8px);
+    @include border-right-radius(2px);
     color: #fff;
     text-decoration: none;
 
@@ -192,7 +224,7 @@ form {
   margin-top: 1em;
   margin-bottom: 2em;
   
-  input[type=text], input[type=password], input[type=email] {
+  input[type=text], input[type=password], input[type=email], div.tagsinput {
     width: 100%;
     font-size: 1em;
     padding: 0.75em;
@@ -201,6 +233,7 @@ form {
     @include border-radius(5px);
     background-color: #ddd;
     border: none;
+    box-sizing: border-box;
     
     &:focus {
       background-color: #fafafa;
@@ -235,6 +268,10 @@ h2 {
   @include border-radius(3px);
   text-align: right;
   margin-top: 0.5em;
+  
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .devise-links:nth-of-type(2) {
@@ -249,4 +286,38 @@ h2 {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#snaps-container.user-snaps {
+  margin-left: 0;
+  margin-right: 0;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.user-profile {
+  width: 200px;
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: text-top;
+  
+  img {
+    max-width: 100%;
+    margin-bottom: 1em;
+  }
+  
+  h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  
+  .username {
+    color: #fafafa;
+    margin: 1em;
+  }
+  
+  .location  {
+    color: #fafafa;
+    margin: 1em;
+  }
 }
