@@ -79,6 +79,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 1em;
+    height: 4em;
     @include linearGradient(#777, #555);
     @include box-shadow(0px,0px,10px,#000,false);
     @include clearfix();
@@ -100,6 +101,10 @@ body {
       
       &:hover {
         text-decoration: underline;
+      }
+      
+      &.button {
+        top: -4px;
       }
     }
     
@@ -133,6 +138,11 @@ main {
 
 a {
   color: #0aaa23;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #snaps-container {
@@ -148,11 +158,13 @@ a {
     margin-bottom: 3em;
     text-align: left;
     
+    
     img {
       border: 5px solid #fff;
       border-bottom: 35px solid #fff;
       float: left;
       margin-right: 1em;
+      -webkit-transform:rotate(-2deg);
     }
     
     section {
@@ -198,10 +210,10 @@ a {
   a {
     font-size: 0.8em;
     background-color: rgba(10, 170, 35, 0.48);
-    padding: 0.5em 0.75em;
+    padding: 0.5em 0.75em 0.5em 1em;
     margin-right: 0.5em;
 //    @include border-radius(3px);
-    @include border-left-radius(8px);
+    @include border-left-radius(12px);
     @include border-right-radius(2px);
     color: #fff;
     text-decoration: none;
@@ -289,7 +301,7 @@ h2 {
 }
 
 #snaps-container.user-snaps {
-  margin-left: 0;
+  margin-left: 200px;
   margin-right: 0;
   display: inline-block;
   vertical-align: text-top;
@@ -300,6 +312,8 @@ h2 {
   display: inline-block;
   margin-right: 100px;
   vertical-align: text-top;
+  position: fixed;
+  margin-left: -100px;
   
   img {
     max-width: 100%;
