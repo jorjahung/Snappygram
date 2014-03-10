@@ -7,7 +7,20 @@
 require 'cucumber/rails'
 require 'pusher'
 require 'capybara/poltergeist'
+
 Capybara.javascript_driver = :poltergeist
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Before('@iframe') do |scenario|
+  Capybara.current_driver = :selenium
+end
+
+After('@iframe') do |scenario|
+  Capybara.use_default_driver
+end
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

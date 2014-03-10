@@ -28,10 +28,10 @@ Given(/^I am on the new snap page$/) do
 end
 
 Given(/^I am the page of a snap I want to buy$/) do
-  visit snap_path(@first_snap)
+  visit snap_path(Snap.first)
 end
 
-Given(/^I have uploaded an image$/) do
+Given(/^(?:I have|someone has) uploaded an image$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Uploaded snap!"
   attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
@@ -71,7 +71,18 @@ When(/^I click on the first image$/) do
 end
 
 When(/^I click the buy button$/) do
-  click_button 'Buy'
+  click_button 'Pay with Card'
+end
+
+When(/^fill in my details$/) do
+  expect(page).to have_css('iframe')
+  Capybara.within_frame("stripe_checkout_app") do
+    fill_in "card_number", with: "42"*8 
+    fill_in "cc-exp", with: "1115"
+    fill_in "cc-csc", with: "123"
+    click_button "Pay $15.00"
+    sleep 10
+  end
 end
 
 Then(/^I should see the photo$/) do
@@ -115,4 +126,9 @@ Then(/^I should see in this order:?$/) do |text|
   pattern = lines.collect(&Regexp.method(:quote)).join('.*?')
   pattern = Regexp.compile(pattern)
   expect(page.text.gsub(/\s+/, '')).to match(pattern)
+end
+
+Then(/^I should have bought the snap$/) do
+  expect(current_path).to eq charges_path
+  expect(page).to have_content("Thanks")
 end
