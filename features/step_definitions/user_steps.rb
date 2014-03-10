@@ -4,7 +4,7 @@ Given(/^I am a registered user$/) do
   fill_in "user[fullname]", with: "Snoopy Babe"
   fill_in "user[email]", with: "snoopybabe@snoopybabe.com"
   fill_in "user[location]", with: "United Kingdom"
-  attach_file('user[avatar]', '/Users/jorja/Desktop/snappygram-images/avatar.jpg')
+  attach_file('user[avatar]', '/Users/jameshunter/Desktop/snappygram-images/avatar.png')
   fill_in "user[password]", with: "snoopybabe"
   fill_in "user[password_confirmation]", with: "snoopybabe"
   click_button "Sign Up"
