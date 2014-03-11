@@ -7,7 +7,7 @@ Feature: Buying snaps
     Given I am a registered user
     And someone has uploaded an image
 
-  @wip @iframe @javascript
+  @iframe @javascript
   Scenario: Buying a snap
     Given I am the page of a snap I want to buy
     When I click the buy button
