@@ -30,7 +30,6 @@ Feature: Snaps
     When I submit a photo with tags
     Then I should see the tags in the homepage
 
-  @wip
   Scenario: Snaps should show date taken and camera used if known
     Given I have uploaded a photo with a known date and model
     When I view the page for that snap
