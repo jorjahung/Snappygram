@@ -40,6 +40,8 @@ gem 'will_paginate', '~> 3.0'
 # Stripe! For payments!
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+gem 'exifr'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

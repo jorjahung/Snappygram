@@ -85,6 +85,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    exifr (1.1.3)
     ffi (1.9.3)
     gherkin (2.12.2)
       multi_json (~> 1.3)
@@ -214,6 +215,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  exifr
   jbuilder (~> 1.2)
   jquery-rails
   paperclip (~> 4.1)
