@@ -38,6 +38,13 @@ Given(/^(?:I have|someone has) uploaded an image$/) do
   click_button 'Upload'
 end
 
+Given(/^I have uploaded a photo with a known date and model$/) do
+  visit new_snap_path
+  fill_in "snap[description]", with: "Week 2!"
+  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/exif.jpg')
+  click_button 'Upload'
+end
+
 
 
 When(/^I upload an image$/) do
@@ -85,6 +92,12 @@ When(/^fill in my details$/) do
   end
 end
 
+When(/^I view the page for that snap$/) do
+  snap = Snap.find_by_description("Week 2!")
+  visit snap_path(snap)
+end
+
+
 Then(/^I should see the photo$/) do
   expect(page).to have_content('Pizzaaaaaa')
   expect(page).to have_content('snoopybabe')
@@ -131,4 +144,9 @@ end
 Then(/^I should have bought the snap$/) do
   expect(current_path).to eq charges_path
   expect(page).to have_content("Thanks")
+end
+
+Then(/^I should see the date and model$/) do
+  expect(page).to have_content("17 January 2014 at 17:51")
+  expect(page).to have_content("iPhone 5")
 end
