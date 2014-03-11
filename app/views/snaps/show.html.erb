@@ -2,6 +2,16 @@
 <section class="snap-section">
   <header><h1><%= @snap.user.username if @snap.user %></h1></header>
   <p><%= @snap.description %></p>
+  <dl>
+    <% if @snap.taken_on %>
+      <dt>Taken on:</dt>
+      <dd><%= @snap.taken_on %></dd>
+    <% end %>
+    <% if @snap.model %>
+      <dt>Taken with:</dt>
+      <dd><%= @snap.model %></dd>
+    <% end %>
+  </dl>
   <footer>
     <% @snap.tags.each do |tag| %>
       <span class="snap-tag"><%= link_to tag.text, tag_path(tag.id) %></span>
