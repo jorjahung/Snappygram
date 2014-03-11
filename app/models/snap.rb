@@ -6,4 +6,17 @@ class Snap < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   self.per_page = 10
+
+  def model
+    EXIFR::JPEG.new(self.image.path).model
+  end
+
+  def taken_on
+    if EXIFR::JPEG.new(self.image.path).date_time
+      time = EXIFR::JPEG.new(self.image.path).date_time
+      time.strftime("%e %B %Y at %R")
+    else
+      nil
+    end
+  end
 end
