@@ -63,6 +63,21 @@
   footer {
     margin-top: 2em;
   }
+  
+  dd, dt {
+    margin-top: 1em;
+    display: inline-block;
+    opacity: 0.8;
+  }
+  
+  dt {
+    margin-right: 0.25em;
+    font-weight: 600;
+  }
+  
+  dd {
+    margin-right: 1em;
+  }
 }
 
 .snap-tag {  
