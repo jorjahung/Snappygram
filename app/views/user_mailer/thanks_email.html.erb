@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for your purchase, <%= @user.fullname %>!</h1>
+    <p>You chose to buy the following:<br /></p>
+    <table>
+      <tr>
+        <th>Thumbnail</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td><%= image_tag attachments['thumb.jpg'].url, style: "max-width:50px;max-height:50px;" %></td>
+        <td><%= @snap.description %></td>
+        <td>$15.00</td>
+      </tr>
+    </table>
+
+    <p>I mean, we can't actually give you anything in return, but we're grateful nonetheless.</p>
+  </body>
+</html>

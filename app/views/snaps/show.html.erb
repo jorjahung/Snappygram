@@ -10,14 +10,15 @@
 </section>
 
 <%= form_tag charges_path do %>
+  <input type="hidden" name="snap_id" value="<%= @snap.id %>">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-amount="1500"
     data-name="Snappygram"
-    data-description="<%= @snap.user.username %>'s Snap ($15.00)"
+    data-description="<%= @snap.user.username %>'s Snap ($15.00) (id: <%= @snap.id %>)"
     data-email=<%= current_user.email %>
-    data-image='/assets/single-03.png',
+    data-image='/assets/single-03.png'
     data-label='Buy! Buy! Buy!'>
   </script>
 <% end %>

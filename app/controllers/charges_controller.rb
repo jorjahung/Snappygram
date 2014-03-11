@@ -18,6 +18,11 @@ class ChargesController < ApplicationController
       currency:    'usd'
     )
 
+    id = params[:snap_id]
+    snap = Snap.find(id)
+
+    UserMailer.thanks_email(current_user, snap).deliver
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
