@@ -1,19 +1,19 @@
 Given(/^there are images$/) do
   @first_snap = Snap.new(description: "Our first snap")
-  @first_snap.image = File.open('/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+  @first_snap.image = File.open("#{::Rails.root.to_s}/features/fixtures/first_snap.jpg")
   @first_snap.save
 end
 
 Given(/^there are pages of snaps uploaded$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Second page!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/first_snap.jpg")
   fill_in "snap[tags]", with: "cat unicorn"
   click_button 'Upload'
   10.times do
     visit new_snap_path
     fill_in "snap[description]", with: "Uploaded snap!"
-    attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/first_snap.jpg')
+    attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/first_snap.jpg")
     fill_in "snap[tags]", with: "cat unicorn"
     click_button 'Upload'
   end
@@ -34,22 +34,21 @@ end
 Given(/^(?:I have|someone has) uploaded an image$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Uploaded snap!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/second_snap.jpg")
   click_button 'Upload'
 end
 
-Given(/^I have uploaded a photo with a known date and model$/) do
+Given(/^I have uploaded a photo with a known (?:date and model|location)$/) do
   visit new_snap_path
   fill_in "snap[description]", with: "Week 2!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/exif.jpg')
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/exif.jpg")
   click_button 'Upload'
 end
-
 
 
 When(/^I upload an image$/) do
   fill_in "snap[description]", with: "Uploaded snap!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/second_snap.jpg")
   click_button 'Upload'
 end
 
@@ -66,7 +65,7 @@ end
 
 When(/^I submit a photo with tags$/) do
   fill_in "snap[description]", with: "It's a cat!"
-  attach_file('snap[image]', '/Users/jameshunter/Desktop/snappygram-images/second_snap.jpg')
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/second_snap.jpg")
   fill_in "snap[tags]", with: "Catatat"
   click_button 'Upload'
 end
@@ -149,4 +148,9 @@ end
 Then(/^I should see the date and model$/) do
   expect(page).to have_content("17 January 2014 at 17:51")
   expect(page).to have_content("iPhone 5")
+end
+
+
+Then(/^I should see the location$/) do
+  expect(page).to have_content("London")
 end

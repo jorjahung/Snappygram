@@ -11,6 +11,10 @@
       <dt>Taken with:</dt>
       <dd><%= @snap.model %></dd>
     <% end %>
+    <% if @snap.latitude %>
+      <dt>Taken in:</dt>
+      <dd><%= @snap.location %></dd>
+    <% end %>
   </dl>
   <footer>
     <% @snap.tags.each do |tag| %>

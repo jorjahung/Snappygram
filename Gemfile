@@ -41,6 +41,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'exifr'
+gem 'httparty'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

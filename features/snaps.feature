@@ -30,11 +30,6 @@ Feature: Snaps
     When I submit a photo with tags
     Then I should see the tags in the homepage
 
-  Scenario: Snaps should show date taken and camera used if known
-    Given I have uploaded a photo with a known date and model
-    When I view the page for that snap
-    Then I should see the date and model
-
   Scenario: Seeing a certain number of snaps per page
     Given there are pages of snaps uploaded
     When I visit the homepage
@@ -44,3 +39,14 @@ Feature: Snaps
     Given I am at the homepage
     When I click on the first image
     Then I should see the page for that image 
+
+  Scenario: Snaps should show date taken and camera used if known
+    Given I have uploaded a photo with a known date and model
+    When I view the page for that snap
+    Then I should see the date and model
+
+  @wip
+  Scenario: Snaps should show the location of where the picture was taken
+    Given I have uploaded a photo with a known location
+    When I view the page for that snap
+    Then I should see the location
