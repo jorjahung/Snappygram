@@ -45,8 +45,13 @@ Feature: Snaps
     When I view the page for that snap
     Then I should see the date and model
 
-  @wip
   Scenario: Snaps should show the location of where the picture was taken
     Given I have uploaded a photo with a known location
     When I view the page for that snap
     Then I should see the location
+
+  @wip
+  Scenario: Map of snaps
+    Given there are photos with known locations
+    When I am on the maps view of all the snaps
+    Then I should see all the locations of all the snaps taken ever

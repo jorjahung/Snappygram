@@ -21,11 +21,17 @@ class Snap < ActiveRecord::Base
   end
 
   def location
-    city+", "+country
+    city + ", " + country
+  rescue
+    locality + ", " + country
+  end
+
+  def locality
+    reverse_geocoding["results"][0]["address_components"].select { |h| h["types"].include? ("locality") }[0]["long_name"]
   end
 
   def city
-    reverse_geocoding["results"][0]["address_components"].select { |h| h["types"].include? "postal_town" }[0]["long_name"]
+    reverse_geocoding["results"][0]["address_components"].select { |h| h["types"].include? ("postal_town") }[0]["long_name"]
   end
 
   def country

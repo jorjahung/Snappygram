@@ -8,6 +8,10 @@ class SnapsController < ApplicationController
     end
   end
 
+  def map
+    @snaps = Snap.all.select { |snap| snap.latitude }
+  end
+
   def new
     if user_signed_in? 
       @snap = Snap.new
