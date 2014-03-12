@@ -8,7 +8,7 @@ class Snap < ActiveRecord::Base
   self.per_page = 10
 
   def model
-    EXIFR::JPEG.new(self.image.path).model
+    @model ||= EXIFR::JPEG.new(self.image.path).model
   end
 
   def taken_on
@@ -33,14 +33,14 @@ class Snap < ActiveRecord::Base
   end
 
   def reverse_geocoding
-    HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{self.latitude},#{self.longitude}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}")
+    @response ||= HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{self.latitude},#{self.longitude}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}")
   end
 
   def longitude
-    EXIFR::JPEG.new(self.image.path).gps.longitude
+    @long ||= EXIFR::JPEG.new(self.image.path).gps.longitude
   end
 
   def latitude
-    EXIFR::JPEG.new(self.image.path).gps.latitude
+    @lat ||= EXIFR::JPEG.new(self.image.path).gps.latitude
   end
 end
