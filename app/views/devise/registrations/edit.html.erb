@@ -3,8 +3,17 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <%= f.label :fullname, class: 'hidden' %>
+  <%= f.text_field :fullname, placeholder: 'Full Name' %>
+
   <%= f.label :email, class: 'hidden' %>
-  <%= f.email_field :email, :autofocus => true, placeholder: 'Email' %></div>
+  <%= f.email_field :email, :autofocus => true, placeholder: 'Email' %>
+
+  <%= f.label :location, class: 'hidden' %>
+  <%= f.text_field :location, placeholder: 'Location' %>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, placeholder: 'Avatar' %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

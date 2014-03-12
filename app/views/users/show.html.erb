@@ -6,5 +6,5 @@
 </aside>
 
 <ul id="snaps-container" class="user-snaps">
-  <%= render partial: 'shared/snaps', locals: { snaps: @user.snaps } %>
+  <%= render partial: 'shared/snaps', locals: { snaps: @user.snaps.order("created_at DESC") } %>
 </ul>
