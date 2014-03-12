@@ -16,6 +16,11 @@
       <dd><%= @snap.location %></dd>
     <% end %>
   </dl>
+
+  <% if @snap.latitude %>
+    <%= image_tag("http://maps.googleapis.com/maps/api/staticmap?center=#{@snap.latitude},#{@snap.longitude}&zoom=16&size=300x300&markers=color:blue%7C#{@snap.latitude},#{@snap.longitude}&sensor=false") %>
+  <% end %>
+
   <footer>
     <% @snap.tags.each do |tag| %>
       <span class="snap-tag"><%= link_to tag.text, tag_path(tag.id) %></span>
