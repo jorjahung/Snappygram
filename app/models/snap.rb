@@ -39,9 +39,17 @@ class Snap < ActiveRecord::Base
   end
 
   def reverse_geocoding
-    @response ||= HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{self.latitude},#{self.longitude}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}")
+    @response ||= HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{self.latlong}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}")
   end
 
+  def has_gps?
+    EXIFR::JPEG.new(self.image.path).gps
+  end
+
+  def latlong
+    latitude.to_s + "," + longitude.to_s
+  end
+  
   def longitude
     @long ||= EXIFR::JPEG.new(self.image.path).gps.longitude
   end

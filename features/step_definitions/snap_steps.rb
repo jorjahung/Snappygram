@@ -45,6 +45,16 @@ Given(/^I have uploaded a photo with a known (?:date and model|location)$/) do
   click_button 'Upload'
 end
 
+Given(/^there are photos with known locations$/) do
+  visit new_snap_path
+  fill_in "snap[description]", with: "STICKERS!"
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/exif.jpg")
+  click_button 'Upload'
+  visit new_snap_path
+  fill_in "snap[description]", with: "NATURE!"
+  attach_file('snap[image]', "#{::Rails.root.to_s}/features/fixtures/exif2.jpg")
+  click_button 'Upload'
+end
 
 When(/^I upload an image$/) do
   fill_in "snap[description]", with: "Uploaded snap!"
@@ -96,6 +106,9 @@ When(/^I view the page for that snap$/) do
   visit snap_path(snap)
 end
 
+When(/^I am on the maps view of all the snaps$/) do
+  visit snap_map_path
+end
 
 Then(/^I should see the photo$/) do
   expect(page).to have_content('Pizzaaaaaa')
@@ -153,4 +166,8 @@ end
 
 Then(/^I should see the location$/) do
   expect(page).to have_content("London")
+end
+
+Then(/^I should see all the locations of all the snaps taken ever$/) do
+  expect(page).to have_content("SOMETHING")
 end

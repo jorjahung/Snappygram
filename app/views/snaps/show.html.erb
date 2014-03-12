@@ -11,14 +11,14 @@
       <dt>Taken with:</dt>
       <dd><%= @snap.model %></dd>
     <% end %>
-    <% if @snap.latitude %>
+    <% if @snap.has_gps? %>
       <dt>Taken in:</dt>
       <dd><%= @snap.location %></dd>
     <% end %>
   </dl>
 
-  <% if @snap.latitude %>
-    <%= image_tag("http://maps.googleapis.com/maps/api/staticmap?center=#{@snap.latitude},#{@snap.longitude}&zoom=16&size=300x300&markers=color:blue%7C#{@snap.latitude},#{@snap.longitude}&sensor=false") %>
+  <% if @snap.has_gps? %>
+    <%= image_tag("http://maps.googleapis.com/maps/api/staticmap?center=#{@snap.latlong}&zoom=16&size=300x300&markers=color:blue%7C#{@snap.latlong}&sensor=false") %>
   <% end %>
 
   <footer>

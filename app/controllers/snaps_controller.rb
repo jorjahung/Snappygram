@@ -9,7 +9,7 @@ class SnapsController < ApplicationController
   end
 
   def map
-    @snaps = Snap.all.select { |snap| snap.latitude }
+    @snaps = Snap.all.select { |snap| snap.has_gps? }
   end
 
   def new
