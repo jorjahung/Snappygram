@@ -4,6 +4,38 @@
 
 @import 'mixins';
 
+
+html, body.map-page, body.map-page main, #map-canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+body.map-page main {
+  margin-top: 4em;
+}
+
+#map-canvas div.gm-style-iw {
+  overflow: visible !important;
+
+  > div {
+    overflow: visible !important;
+  }
+
+  a.map-user-link {
+    display: block;
+    text-align: left;
+    margin: 0.5em 0;
+  }
+
+  p {
+    color: #000;
+    text-align: left;
+    margin: 0.5em 0;
+  }
+}
+
 #snaps-container {
   width: 100%;
   box-sizing: border-box;
