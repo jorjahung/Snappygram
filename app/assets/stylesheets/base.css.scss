@@ -49,6 +49,8 @@ body {
       
       &.button {
         top: -4px;
+        margin-right: 0;
+        margin-left: 0.75em;
       }
     }
     
@@ -175,7 +177,56 @@ h2 {
   &:active {
     @include linearGradient(darken($green, 10%), $green);
   }
+
+  &.icon-button {
+    padding: 0.4em 0.5em;
+    font-size: 1.5em;
+  }
 }
+
+.globe-button, .settings-button {
+  @include linearGradient($map-color, darken($map-color, 10%));
+
+  &:hover {
+    @include linearGradient(lighten($map-color, 3%), darken($map-color, 10%));
+    color: lighten($green, 50%);
+  }
+  
+  &:active {
+    @include linearGradient(darken($map-color, 10%), $map-color);
+  }
+}
+
+#settings-dropdown {
+  position: absolute;
+  right: 5em;
+  top: 4em;
+  display: block;
+  background-color: #fafafa;
+  text-align: left;
+  padding: 1em;
+  @include border-bottom-radius(4px);
+
+  li {
+    margin-bottom: 0.75em;
+
+    &:last-child {
+      margin-bottom: 0.25em;
+    }
+  }
+
+  a {
+    color: #333;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+// a:hover > .fa-globe {
+//   color: #99ff99;
+// }
 
 .devise-links:nth-of-type(2) {
   margin-left: 1em;

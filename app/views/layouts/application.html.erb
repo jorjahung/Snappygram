@@ -10,16 +10,22 @@
   <header>
     <%= image_tag "single-03.png" %>
     <%= link_to 'Snappygram', root_path, id: "logo" %>
+    
     <ul class="user-links">
       <% if user_signed_in? %>
-        <li><%= link_to 'New Snap', new_snap_path, class: 'button' %></li>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to icon('globe'), snap_map_path, class: 'button icon-button globe-button' %></li>
+        <li><%= link_to icon('cogs'), "#", id: "settings-menu", class: 'button icon-button settings-button' %></li>
+        <li><%= link_to icon('camera-retro'), new_snap_path, class: 'button icon-button' %></li>
       <% else %>
         <li><%= link_to 'Sign In', new_user_session_path %></li>
         <li><%= link_to 'Sign Up', new_user_registration_path %></li>
       <% end %>
     </ul>
   </header>
+  <ul class="hidden" id="settings-dropdown">
+    <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+    <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+  </ul>
   <main>
     <% if notice %>
       <p class="flash notice"><%= notice %></p>

@@ -50,7 +50,6 @@ Feature: Snaps
     When I view the page for that snap
     Then I should see the location
 
-  @wip
   Scenario: Map of snaps
     Given there are photos with known locations
     When I am on the maps view of all the snaps

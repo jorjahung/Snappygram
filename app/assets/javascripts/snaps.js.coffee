@@ -6,3 +6,7 @@ $ ->
     return unless visible
     
     return $.getScript $(this).attr('href')
+
+  $('#settings-menu').click( ->
+    $('#settings-dropdown').toggleClass('hidden')
+  )
