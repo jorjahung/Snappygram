@@ -42,6 +42,10 @@ class Snap < ActiveRecord::Base
     @response ||= HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{self.latlong}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}")
   end
 
+  def can_use_exif?
+    self.image_content_type == "image/jpeg"
+  end
+
   def has_gps?
     EXIFR::JPEG.new(self.image.path).gps
   end
