@@ -9,7 +9,7 @@ class SnapsController < ApplicationController
   end
 
   def map
-    @snaps = Snap.all.select { |snap| snap.has_gps? }
+    @snaps = Snap.all.select { |snap| snap.can_use_exif? && snap.has_gps? }
   end
 
   def new

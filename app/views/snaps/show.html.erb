@@ -3,21 +3,21 @@
   <header><h1><%= @snap.user.username if @snap.user %></h1></header>
   <p><%= @snap.description %></p>
   <dl>
-    <% if @snap.taken_on %>
+    <% if @snap.can_use_exif? && @snap.taken_on %>
       <dt>Taken on:</dt>
       <dd><%= @snap.taken_on %></dd>
     <% end %>
-    <% if @snap.model %>
+    <% if @snap.can_use_exif? && @snap.model %>
       <dt>Taken with:</dt>
       <dd><%= @snap.model %></dd>
     <% end %>
-    <% if @snap.has_gps? %>
+    <% if @snap.can_use_exif? && @snap.has_gps? %>
       <dt>Taken in:</dt>
       <dd><%= @snap.location %></dd>
     <% end %>
   </dl>
 
-  <% if @snap.has_gps? %>
+  <% if @snap.can_use_exif? && @snap.has_gps? %>
     <%= image_tag("http://maps.googleapis.com/maps/api/staticmap?center=#{@snap.latlong}&zoom=16&size=300x300&markers=color:blue%7C#{@snap.latlong}&sensor=false") %>
   <% end %>
 
