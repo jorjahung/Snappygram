@@ -169,5 +169,5 @@ Then(/^I should see the location$/) do
 end
 
 Then(/^I should see all the locations of all the snaps taken ever$/) do
-  expect(page).to have_content("SOMETHING")
+  expect(page).to have_css("#map-canvas")
 end
