@@ -13,7 +13,7 @@ class SnapsController < ApplicationController
   end
 
   def new
-    if user_signed_in? 
+    if user_signed_in?
       @snap = Snap.new
     else
       redirect_to new_user_session_path
