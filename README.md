@@ -1,5 +1,6 @@
 Snappygram
 ==========
+
 ###Instagram inspired copy called Snappygram
 
 - User authentication (Devise)
