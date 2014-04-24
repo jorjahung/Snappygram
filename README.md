@@ -13,3 +13,9 @@ Snappygram
 
 **Team: [Jorja Hung](https://github.com/jorjahung), [James Hunter](https://github.com/nottheusual) and [Nabin Rai](https://github.com/nabin369)**
 
+####User view:
+![alt text](https://raw.githubusercontent.com/jorjahung/Snappygram/master/screenshot2.png "Snappygram")
+
+####Map view:
+![alt text](https://raw.githubusercontent.com/jorjahung/Snappygram/master/screenshot1.png "Snappygram")
+
